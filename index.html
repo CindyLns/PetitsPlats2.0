@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        title: ['Anton', 'sans-serif'],
+                        corps: ['Manrope', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
     <link rel="icon" type="image/png" href="assets/utiles/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Les Petits Plats</title>
 </head>
 <body>
+    <header class="h-[42rem] bg-[url('assets/utiles/lampos-bg.jpg')] bg-center flex flex-col">
+        <img src="assets/utiles/Logo.png" class="w-fit pt-12 pl-16" alt="les petits plats logo"/>
+        <div class="flex justify-center flex-col items-center h-full w-full">
+            <h1 class="font-title text-[#FFD15B] text-4xl text-center leading-relaxed content-center mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+            <div class="bg-white w-[60rem] p-2 rounded-xl">
+                <form action="" method="get" role="search" class="flex justify-between">
+                    <input class="font-corps w-4/6 ml-8" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                    <button type="submit" class="p-4 bg-black rounded-lg"><i class="fa-solid fa-magnifying-glass text-white text-[28px] "></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    
     
 </body>
 </html>
