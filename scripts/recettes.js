@@ -6,13 +6,16 @@ async function getRecipes() {
     return data;
 }
 
+let allRecipes = [];
+let filteredRecipes = [];
+
 function recipesTemplate(recipe) {
     const { image, name, time, description, ingredients } = recipe;
 
     const recettesSection = document.getElementById("sectionRecettes");
 
     const recettesArticle = document.createElement('article');
-    recettesArticle.classList.add('bg-white', 'rounded-3xl', 'w-[30%]', 'relative');
+    recettesArticle.classList.add('card_recipe', 'bg-white', 'rounded-3xl', 'w-[30%]', 'relative');
 
 
     // Créer l'élément image
@@ -67,9 +70,6 @@ function recipesTemplate(recipe) {
     bottomContainer.appendChild(ingredientsContainer);
 
     // Ajouter les ingrédients
-   // Vérifiez que 'ingredients' est un tableau avant d'utiliser forEach
-   if (Array.isArray(ingredients)) {
-    // Ajouter les ingrédients
     ingredients.forEach(ingredientObj => {
         const { ingredient, quantity, unit } = ingredientObj;
 
@@ -89,26 +89,43 @@ function recipesTemplate(recipe) {
 
         ingredientsContainer.appendChild(ingredientDiv);
     });
-} else {
-    // Gérer le cas où 'ingredients' n'est pas défini ou n'est pas un tableau
-    const noIngredientsMessage = document.createElement('p');
-    noIngredientsMessage.textContent = 'Ingrédients non disponibles';
-    ingredientsContainer.appendChild(noIngredientsMessage);
-}
 
 // Ajouter la recette au conteneur de recettes
 recettesSection.appendChild(recettesArticle);
 }
 
 async function displayData(recipes) {
+    const recettesSection = document.getElementById("sectionRecettes");
+    recettesSection.innerHTML = ''; 
     recipes.forEach((recipe) => {
         recipesTemplate(recipe); 
     });
 }
 
+const searchBar = document.querySelector('.search_input');
+searchBar.addEventListener("keyup", (e) => {
+    const searchElement = e.target.value;
+    filterRecipes(searchElement)
+
+});
+
+function showTotalRecipe(allRecipes) {
+    return allRecipes.length; 
+}
+
+//Affiche le nombre total de recettes
+function displayTotalRecipes(totalrecipes) {
+    const totalRecettes = document.querySelector(".total_recettes");
+    totalRecettes.innerText = `${totalrecipes} recettes`;
+}
+
 async function init() {
     const { recipes } = await getRecipes();
-    displayData(recipes);
+    allRecipes = recipes; // On stocke toutes les recettes dans allRecipes
+    filteredRecipes = allRecipes; // On commence avec toutes les recettes affichées
+    displayData(allRecipes); // Affichage des recettes au chargement de la page
+    const totalrecipes = showTotalRecipe(allRecipes);
+    displayTotalRecipes(totalrecipes);
 }
 
 init();

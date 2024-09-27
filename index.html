@@ -30,8 +30,8 @@
         <div class="flex justify-center flex-col items-center h-full w-full">
             <h1 class="font-title text-[#FFD15B] text-4xl text-center leading-relaxed content-center mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
             <div class="bg-white w-[60rem] p-2 rounded-xl">
-                <form action="" method="get" role="search" class="flex justify-between">
-                    <input class="w-4/6 ml-8" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                <form method="get" role="search" class="flex justify-between">
+                    <input class="search_input w-[90%] ml-8" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
                     <button class="p-4 bg-black rounded-lg"><i class="fa-solid fa-magnifying-glass text-white text-[28px] "></i></button>
                 </form>
             </div>
@@ -54,7 +54,7 @@
                 </button>
             </div>
             <div>
-                <p class="font-title text-xl">1500 recettes</p>
+                <p class="total_recettes font-title text-xl"></p>
             </div>
         </section>
 
@@ -64,6 +64,7 @@
     </main>
 
     <script src="scripts/recettes.js"></script>
+    <script src="scripts/recherche.js"></script>
     
 </body>
 </html>
