@@ -26,7 +26,7 @@ function filterIngredients(searchIngredients) {
         
         // Mettre à jour la liste des ingrédients à partir des recettes filtrées
         filteredIngredient = showIngredients(filteredIngredient);
-    }
+    } 
 
     console.log(filteredIngredient);
     // Afficher les ingrédients filtrés

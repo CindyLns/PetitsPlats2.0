@@ -188,6 +188,7 @@ function displayTotalRecipes(totalrecipes) {
     totalRecettes.innerText = `${totalrecipes} recettes`;
 }
 
+//Barre de recherche filtre
 const searchBarIngredients = document.querySelector('.search_filter-ingredients');
 searchBarIngredients.addEventListener("keyup", (e) => {
     const searchIngredients = e.target.value;
