@@ -26,39 +26,60 @@
 </head>
 <body class="font-corps bg-[#EDEDED]">
     <header class="h-[42rem] bg-[url('assets/utiles/lampos-bg.jpg')] bg-center bg-no-repeat bg-cover flex flex-col">
-        <img src="assets/utiles/Logo.png" class="w-fit pt-12 pl-16" alt="les petits plats logo"/>
-        <div class="flex justify-center flex-col items-center h-full w-full">
+        <img src="assets/utiles/Logo.png" class="w-fit pt-12 m-auto lg:m-0 lg:pl-16" alt="les petits plats logo"/>
+        <div class="flex justify-center flex-col items-center h-full w-full px-4 lg:px-0">
             <h1 class="font-title text-[#FFD15B] text-4xl text-center leading-relaxed content-center mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
-            <div class="bg-white w-[60rem] p-2 rounded-xl">
+            <div class="bg-white w-full p-2 rounded-xl md:w-[80%] lg:w-[60rem]">
                 <form method="get" role="search" class="flex justify-between">
-                    <input class="search_input w-[90%] ml-8" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                    <input class="search_input w-[90%] text-[13px] md:ml-8 md:text-base" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
                     <button class="p-4 bg-black rounded-lg"><i class="fa-solid fa-magnifying-glass text-white text-[28px] "></i></button>
                 </form>
             </div>
         </div>
     </header>
-    <main class="mx-[6.5rem]">
+    <main class="mx-4 md:mx-8 lg:mx-[6.5rem]">
         <section class="flex justify-between items-center mt-5 mb-14">
             <div class="flex gap-16">
-                <button class="bg-white px-4 py-4 rounded-xl flex items-center gap-16">
-                    <span class="">Ingrédients</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <button class="bg-white px-4 py-4 rounded-xl flex items-center gap-16">
-                    <span class="">Appareils</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <button class="bg-white px-4 py-4 rounded-xl flex items-center gap-16">
-                    <span class="">Ustensiles</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
+                <div class="dropdownFiltre w-48 bg-white px-4 py-4 rounded-xl flex flex-col items-center gap-3.5 cursor-pointer">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="">Ingrédients</span>
+                        <i class="chevron-dropdown fa-solid fa-chevron-down"></i>
+                    </div>
+                    <form method="get" role="search" class="search_form hidden w-full flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
+                        <input class="search_filter-ingredients w-full" id="search" type="search" name="search">
+                        <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
+                    </form>
+                    <div class="ingredient_filtre hidden"></div>
+                </div>
+                <div class="dropdownFiltre w-48 bg-white px-4 py-4 rounded-xl flex flex-col items-center gap-3.5 cursor-pointer">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="">Appareils</span>
+                        <i class="chevron-dropdown fa-solid fa-chevron-down"></i>
+                    </div>
+                    <form method="get" role="search" class="search_form hidden w-full flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
+                        <input class="search_filter w-full" id="search" type="search" name="search">
+                        <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
+                    </form>
+                    <div class="appareil_filtre w-full hidden"></div>
+                </div>
+                <div class="dropdownFiltre w-48 bg-white px-4 py-4 rounded-xl flex flex-col items-center gap-3.5 cursor-pointer">
+                    <div class="w-full flex justify-between items-center">
+                        <span class="">Ustensiles</span>
+                        <i class="chevron-dropdown fa-solid fa-chevron-down"></i>
+                    </div>
+                    <form method="get" role="search" class="search_form hidden w-full flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
+                        <input class="search_filter w-full" id="search" type="search" name="search">
+                        <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
+                    </form>
+                    <div class="ustensile_filtre hidden"></div>
+                </div> 
             </div>
             <div>
                 <p class="total_recettes font-title text-xl"></p>
             </div>
-        </section>
+        </section> 
 
-        <section id="sectionRecettes" class="mb-40 flex flex-wrap justify-between gap-y-16">
+        <section id="sectionRecettes" class="mb-40 flex flex-wrap justify-between gap-y-8 md:gap-x-8 lg:gap-y-16">
         </section>
 
     </main>
