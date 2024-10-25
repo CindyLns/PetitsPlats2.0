@@ -15,6 +15,16 @@ function filterRecipes(searchElement) {
 
 //Filtres de recherche
 
+/*function filterIngredients(searchIngredients) {
+    if (searchIngredients.length > 2) {
+        filteredIngredient = allIngredient.filter(ingredient => 
+            ingredient.ingredients.toLowerCase().includes(searchIngredients.toLowerCase())
+        );
+        console.log(filteredIngredient)
+    } 
+    showIngredients(filteredIngredient);
+}*/
+
 function filterIngredients(searchIngredients) {
     if (searchIngredients.length > 2) {
         // Filtrer les ingrédients correspondant à la recherche dans les recettes
@@ -23,15 +33,10 @@ function filterIngredients(searchIngredients) {
                 ing.ingredient.toLowerCase().includes(searchIngredients.toLowerCase())
             )
         );
-        
+        console.log(filteredRecipes);
         // Mettre à jour la liste des ingrédients à partir des recettes filtrées
         filteredIngredient = showIngredients(filteredIngredient);
     } 
-
-    console.log(filteredIngredient);
-    // Afficher les ingrédients filtrés
-    
+  
 }
-
-
-
+ 

@@ -105,19 +105,18 @@ async function displayData(recipes) {
 
 }
 
-function showIngredients(recipes) {
+function showIngredients(ingredients) {
     const ingredientFiltre = document.querySelector(".ingredient_filtre");
     ingredientFiltre.innerHTML = ''; 
 
     let allIngredients = new Set(); // Utiliser un Set pour éviter les doublons
-
     // Parcourir chaque recette pour récupérer les ingrédients
-    recipes.forEach(recipe => {
-        recipe.ingredients.forEach(ingredientObj => {
+    ingredients.forEach(ingredient => {
+        console.log(ingredient)
+        ingredient.ingredients.forEach(ingredientObj => {
             allIngredients.add(ingredientObj.ingredient.toLowerCase()); // Ajouter l'ingrédient au Set
         });
     });
-
     // Ajouter chaque ingrédient au conteneur
     allIngredients.forEach(ingredient => {
         const ingredientName = document.createElement('p');
@@ -200,7 +199,7 @@ searchBarIngredients.addEventListener("keyup", (e) => {
 //Gère l'affichage du menu déroulant
 const dropdownFiltres = document.querySelectorAll(".dropdownFiltre");
 
-dropdownFiltres.forEach((dropdown, index) => {
+dropdownFiltres.forEach((dropdown) => {
     // Sélectionne les éléments spécifiques à chaque dropdown
     const chevron = dropdown.querySelector(".chevron-dropdown");
     const searchForm = dropdown.querySelector(".search_form");
@@ -221,7 +220,6 @@ dropdownFiltres.forEach((dropdown, index) => {
         });
     });
 });
-
 
 async function init() {
     const { recipes } = await getRecipes();
