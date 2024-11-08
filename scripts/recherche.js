@@ -36,3 +36,21 @@ function filterUstensil(searchUstensil) {
     showUstensil(filteredUstensil);
 }
 
+function filterRecipesByTags() {
+    if (selectedFilters.length === 0) {
+        // Si aucun tag n'est sélectionné, afficher toutes les recettes
+        filteredRecipes = allRecipes;
+    } else {
+        // Filtrer les recettes pour qu'elles contiennent tous les ingrédients sélectionnés
+        filteredRecipes = allRecipes.filter(recipe =>
+            selectedFilters.every(tag =>
+                recipe.ingredients.some(ingredientObj =>
+                    ingredientObj.ingredient.toLowerCase() === tag
+                )
+            )
+        );
+    }
+    displayData(filteredRecipes);
+    const totalRecipes = showTotalRecipe(filteredRecipes);
+    displayTotalRecipes(totalRecipes);
+}
