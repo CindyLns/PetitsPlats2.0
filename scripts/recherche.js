@@ -15,28 +15,24 @@ function filterRecipes(searchElement) {
 
 //Filtres de recherche
 
-/*function filterIngredients(searchIngredients) {
-    if (searchIngredients.length > 2) {
-        filteredIngredient = allIngredient.filter(ingredient => 
-            ingredient.ingredients.toLowerCase().includes(searchIngredients.toLowerCase())
-        );
-        console.log(filteredIngredient)
-    } 
-    showIngredients(filteredIngredient);
-}*/
-
 function filterIngredients(searchIngredients) {
-    if (searchIngredients.length > 2) {
-        // Filtrer les ingrédients correspondant à la recherche dans les recettes
-        filteredRecipes = allRecipes.filter(recipe =>
-            recipe.ingredients.some(ing => 
-                ing.ingredient.toLowerCase().includes(searchIngredients.toLowerCase())
-            )
+        filteredIngredient = [...allIngredients].filter(ingredient => 
+            ingredient.toLowerCase().includes(searchIngredients.toLowerCase())
         );
-        console.log(filteredRecipes);
-        // Mettre à jour la liste des ingrédients à partir des recettes filtrées
-        filteredIngredient = showIngredients(filteredIngredient);
-    } 
-  
+    showIngredients(filteredIngredient);
 }
- 
+
+function filterAppliance(searchAppliance) {
+    filteredAppliance = [...allAppliances].filter(appliance => 
+        appliance.toLowerCase().includes(searchAppliance.toLowerCase())
+    );
+    showAppliance(filteredAppliance);
+}
+
+function filterUstensil(searchUstensil) {
+    filteredUstensil = [...allUstensils].filter(ustensil => 
+        ustensil.toLowerCase().includes(searchUstensil.toLowerCase())
+    );
+    showUstensil(filteredUstensil);
+}
+
