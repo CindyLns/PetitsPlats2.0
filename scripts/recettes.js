@@ -175,6 +175,7 @@ function showAppliance(appliances) {
         const applianceName = document.createElement('p');
         applianceName.classList.add('text-sm', 'mb-3');
         applianceName.textContent = appliance;
+        applianceName.addEventListener('click', () => addTagApp(appliance));
         applianceFiltre.appendChild(applianceName);
     });
 }
@@ -183,6 +184,33 @@ function listAppliance () {
     allRecipes.forEach(recipe => {
         allAppliances.add(recipe.appliance.toLowerCase());
     });
+}
+
+function addTagApp(appliance) {
+    const tagsContainer = document.getElementById("tags");
+    if (!selectedFilters.includes(appliance)) {
+        selectedFilters.push(appliance); // Ajouter l'ingrédient dans les tags sélectionnés
+
+        const tag = document.createElement('span');
+        tag.classList.add('bg-[#FFD15B]', 'inline-flex', 'items-center', 'py-[17px]', 'px-[18px]', 'rounded-[10px]', 'gap-14', 'text-sm'); 
+        tag.textContent = appliance;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'x';
+        removeBtn.classList.add('text-lg', 'font-bold');
+        removeBtn.onclick = () => {
+            tagsContainer.removeChild(tag);
+            selectedFilters = selectedFilters.filter(item => item !== appliance); // Supprimer le tag de la sélection
+            filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+        };
+
+        tag.appendChild(removeBtn);
+        tagsContainer.appendChild(tag);
+
+        filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+
+        closeDropdownOnTagAdd();
+    }
 }
 
 function showUstensil(ustensils) {
@@ -194,6 +222,7 @@ function showUstensil(ustensils) {
         const ustensilName = document.createElement('p');
         ustensilName.classList.add('text-sm', 'mb-3');
         ustensilName.textContent = ustensil;
+        ustensilName.addEventListener('click', () => addTagUs(ustensil));
         ustensilFiltre.appendChild(ustensilName);
     });
 }
@@ -204,6 +233,33 @@ function listUstensil () {
             allUstensils.add(ustensil.toLowerCase());
         });
     });
+}
+
+function addTagUs(ustensil) {
+    const tagsContainer = document.getElementById("tags");
+    if (!selectedFilters.includes(ustensil)) {
+        selectedFilters.push(ustensil); // Ajouter l'ingrédient dans les tags sélectionnés
+
+        const tag = document.createElement('span');
+        tag.classList.add('bg-[#FFD15B]', 'inline-flex', 'items-center', 'py-[17px]', 'px-[18px]', 'rounded-[10px]', 'gap-14', 'text-sm'); 
+        tag.textContent = ustensil;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'x';
+        removeBtn.classList.add('text-lg', 'font-bold');
+        removeBtn.onclick = () => {
+            tagsContainer.removeChild(tag);
+            selectedFilters = selectedFilters.filter(item => item !== ustensil); // Supprimer le tag de la sélection
+            filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+        };
+
+        tag.appendChild(removeBtn);
+        tagsContainer.appendChild(tag);
+
+        filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+
+        closeDropdownOnTagAdd();
+    }
 }
 
 const searchBar = document.querySelector('.search_input');

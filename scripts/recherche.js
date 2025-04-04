@@ -46,6 +46,11 @@ function filterRecipesByTags() {
             selectedFilters.every(tag =>
                 recipe.ingredients.some(ingredientObj =>
                     ingredientObj.ingredient.toLowerCase() === tag
+                )||
+                recipe.appliance.toLowerCase() === tag
+                ||
+                recipe.ustensils.some(ustensil =>
+                    ustensil.toLowerCase() === tag
                 )
             )
         );
