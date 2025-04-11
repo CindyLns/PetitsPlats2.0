@@ -14,6 +14,7 @@ let allAppliances = new Set();
 let filteredAppliance = [];
 let allUstensils = new Set();
 let filteredUstensil = [];
+let searchElement = [];
 let selectedFilters = [];
 
 function recipesTemplate(recipe) {
@@ -134,7 +135,6 @@ function listIngredient () {
             allIngredients.add(ingredientObj.ingredient.toLowerCase()); // Ajouter l'ingrédient au Set
         });
     });
-    console.log(allIngredients)
 }
 
 function addTag(ingredient) {
@@ -152,19 +152,17 @@ function addTag(ingredient) {
         removeBtn.onclick = () => {
             tagsContainer.removeChild(tag);
             selectedFilters = selectedFilters.filter(item => item !== ingredient); // Supprimer le tag de la sélection
-            filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+            filterRecipes(); // Mettre à jour l'affichage des recettes
         };
 
         tag.appendChild(removeBtn);
         tagsContainer.appendChild(tag);
 
-        filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+        filterRecipes(); // Mettre à jour l'affichage des recettes
 
         closeDropdownOnTagAdd();
     }
 }
-
-
 
 function showAppliance(appliances) {
     const applianceFiltre = document.querySelector(".appareil_filtre");
@@ -201,13 +199,13 @@ function addTagApp(appliance) {
         removeBtn.onclick = () => {
             tagsContainer.removeChild(tag);
             selectedFilters = selectedFilters.filter(item => item !== appliance); // Supprimer le tag de la sélection
-            filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+            filterRecipes(); // Mettre à jour l'affichage des recettes
         };
 
         tag.appendChild(removeBtn);
         tagsContainer.appendChild(tag);
 
-        filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+        filterRecipes(); // Mettre à jour l'affichage des recettes
 
         closeDropdownOnTagAdd();
     }
@@ -250,13 +248,13 @@ function addTagUs(ustensil) {
         removeBtn.onclick = () => {
             tagsContainer.removeChild(tag);
             selectedFilters = selectedFilters.filter(item => item !== ustensil); // Supprimer le tag de la sélection
-            filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+            filterRecipes(); // Mettre à jour l'affichage des recettes
         };
 
         tag.appendChild(removeBtn);
         tagsContainer.appendChild(tag);
 
-        filterRecipesByTags(); // Mettre à jour l'affichage des recettes
+        filterRecipes(); // Mettre à jour l'affichage des recettes
 
         closeDropdownOnTagAdd();
     }
@@ -264,8 +262,8 @@ function addTagUs(ustensil) {
 
 const searchBar = document.querySelector('.search_input');
 searchBar.addEventListener("keyup", (e) => {
-    const searchElement = e.target.value;
-    filterRecipes(searchElement)
+    searchElement = e.target.value;
+    filterRecipes();
 
 });
 
