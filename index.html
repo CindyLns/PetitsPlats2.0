@@ -31,7 +31,7 @@
             <h1 class="font-title text-[#FFD15B] text-4xl text-center leading-relaxed content-center mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
             <div class="bg-white w-full p-2 rounded-xl md:w-[80%] lg:w-[60rem]">
                 <form method="get" role="search" class="flex justify-between">
-                    <input class="search_input w-[90%] text-[13px] md:ml-8 md:text-base" id="search" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                    <input class="search_input w-[90%] text-[13px] md:ml-8 md:text-base" id="searchInput" type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
                     <button class="p-4 bg-black rounded-lg"><i class="fa-solid fa-magnifying-glass text-white text-[28px] "></i></button>
                 </form>
             </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="absolute z-10 mt-[22px] bg-white w-48 px-4 pb-4 rounded-xl">
                             <form method="get" role="search" class="search_form hidden w-full mt-4 flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
-                                <input class="search_filter-ingredients w-full" id="search" type="search" name="search">
+                                <input class="search_filter-ingredients w-full" id="searchIngredients" type="search" name="search">
                                 <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
                             </form>
                             <div class="ingredient_filtre hidden overflow-auto max-h-52 mt-4"></div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="absolute z-10 mt-[22px] bg-white w-48 px-4 pb-4 rounded-xl">
                             <form method="get" role="search" class="search_form hidden w-full mt-4 flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
-                                <input class="search_filter-appliance w-full" id="search" type="search" name="search">
+                                <input class="search_filter-appliance w-full" id="searchAppliance" type="search" name="search">
                                 <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
                             </form>
                             <div class="appareil_filtre w-full hidden overflow-auto max-h-52 mt-4"></div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="absolute z-10 mt-[22px] bg-white w-48 px-4 pb-4 rounded-xl">
                             <form method="get" role="search" class="search_form hidden w-full mt-4 flex justify-between border-solid border border-[#C6C6C6] rounded-sm p-2.5">
-                                <input class="search_filter-ustensil w-full" id="search" type="search" name="search">
+                                <input class="search_filter-ustensil w-full" id="searchUstensil" type="search" name="search">
                                 <button><i class="fa-solid fa-magnifying-glass text-[#7A7A7A] text-[14px] "></i></button>
                             </form>
                             <div class="ustensile_filtre hidden overflow-auto max-h-52 mt-4"></div>
