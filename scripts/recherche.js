@@ -1,29 +1,96 @@
 //Filtres recettes
 function filterRecipes() {
-    filteredRecipes = allRecipes;
+    filteredRecipes = [];
 
-    if(searchElement.length > 2){
-        filteredRecipes = filteredRecipes.filter(recipe => 
-            recipe.name.toLowerCase().includes(searchElement.toLowerCase()) || 
-            recipe.description.toLowerCase().includes(searchElement.toLowerCase()) || 
-            recipe.ingredients.some(ing => ing.ingredient.toLowerCase().includes(searchElement.toLowerCase()))
-        );
+    for (let i = 0; i < allRecipes.length; i++) {
+        const recipe = allRecipes[i];
+        const search = searchElement.toLowerCase();
+
+        if (searchElement.length > 2) {
+            let match = false;
+
+            // Vérifie le nom
+            if (recipe.name.toLowerCase().includes(search)) {
+                match = true;
+            }
+
+            // Vérifie la description
+            else if (recipe.description.toLowerCase().includes(search)) {
+                match = true;
+            }
+
+            // Vérifie les ingrédients
+            else {
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    const ingredient = recipe.ingredients[j].ingredient.toLowerCase();
+                    if (ingredient.includes(search)) {
+                        match = true;
+                        break;
+                    }
+                }
+            }
+
+            if (match) {
+                filteredRecipes.push(recipe);
+            }
+        } else {
+            filteredRecipes.push(recipe);
+        }
     }
+
     if (selectedFilters.length > 0) {
-        filteredRecipes = filteredRecipes.filter(recipe =>
-            selectedFilters.every(tag =>
-                recipe.ingredients.some(ing => ing.ingredient.toLowerCase() === tag) ||
-                recipe.appliance.toLowerCase() === tag ||
-                recipe.ustensils.some(ust => ust.toLowerCase() === tag)
-            )
-        );
+        const tempRecipes = [];
+
+        for (let i = 0; i < filteredRecipes.length; i++) {
+            const recipe = filteredRecipes[i];
+            let matchesAll = true;
+
+            for (let j = 0; j < selectedFilters.length; j++) {
+                const tag = selectedFilters[j];
+                let tagMatch = false;
+
+                for (let k = 0; k < recipe.ingredients.length; k++) {
+                    if (recipe.ingredients[k].ingredient.toLowerCase() === tag) {
+                        tagMatch = true;
+                        break;
+                    }
+                }
+
+                if (!tagMatch && recipe.appliance.toLowerCase() === tag) {
+                    tagMatch = true;
+                }
+
+                if (!tagMatch) {
+                    for (let k = 0; k < recipe.ustensils.length; k++) {
+                        if (recipe.ustensils[k].toLowerCase() === tag) {
+                            tagMatch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!tagMatch) {
+                    matchesAll = false;
+                    break;
+                }
+            }
+
+            if (matchesAll) {
+                tempRecipes.push(recipe);
+            }
+        }
+
+        filteredRecipes = tempRecipes;
     }
+
     displayData(filteredRecipes);
     const totalRecipes = showTotalRecipe(filteredRecipes);
     displayTotalRecipes(totalRecipes);
     displayAlertMessage(filteredRecipes.length === 0);
     updateFiltersFromFilteredRecipes();
 }
+
+
 
 //Message aucune recette correspondante à la recherche
 function displayAlertMessage(displayNoRecipeFound) {
